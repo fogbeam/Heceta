@@ -1,20 +1,26 @@
+
 dataSource {
 	pooled = true
-	driverClassName = "org.hsqldb.jdbcDriver"
-	username = "sa"
+	// driverClassName = "org.hsqldb.jdbcDriver"
+	driverClassName = "org.postgresql.Driver"
+	// username = "sa"
+	username = "postgres"
+	// password = ""
 	password = ""
+	logSql = false
 }
 hibernate {
     cache.use_second_level_cache=true
     cache.use_query_cache=true
-    cache.provider_class='net.sf.ehcache.hibernate.EhCacheProvider'
+    cache.provider_class='com.opensymphony.oscache.hibernate.OSCacheProvider'
 }
 // environment specific settings
 environments {
 	development {
 		dataSource {
-			dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-			url = "jdbc:hsqldb:mem:devDB"
+			dbCreate = "update" // one of 'create', 'create-drop','update'
+			// url = "jdbc:hsqldb:mem:devDB"
+			url = "jdbc:postgresql:heceta1"
 		}
 	}
 	test {
