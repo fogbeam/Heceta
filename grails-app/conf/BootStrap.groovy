@@ -1,5 +1,13 @@
-import grails.util.Environment; 
-import org.fogbeam.heceta.User 
+import grails.util.Environment
+
+import org.apache.lucene.analysis.standard.StandardAnalyzer
+import org.apache.lucene.document.Document
+import org.apache.lucene.index.IndexWriter
+import org.apache.lucene.index.IndexWriter.MaxFieldLength
+import org.apache.lucene.store.Directory
+import org.apache.lucene.store.NIOFSDirectory
+import org.apache.lucene.util.Version
+import org.fogbeam.heceta.User
 
 class BootStrap {
 
@@ -13,6 +21,7 @@ class BootStrap {
 				createAdminUser();
 				createSomeUsers();
 				createAnonymousUser();
+				initIndex();
 				break;
 			case Environment.PRODUCTION:
 				println "No special configuration required";
@@ -26,6 +35,35 @@ class BootStrap {
 		
 	}
 
+	void initIndex()
+	{
+		String hecetaHome = System.getProperty( "heceta.home");
+		String indexDirLocation = hecetaHome + "/index";
+		
+		File indexFile = new java.io.File( indexDirLocation );
+		String[] indexFileChildren = indexFile.list();
+		boolean indexIsInitialized = (indexFileChildren != null && indexFileChildren.length > 0 );
+		
+		if( !indexIsInitialized )
+		{
+			println( "Index not previously initialized, creating empty index" );
+			/* initialize empty index */
+			Directory indexDir = new NIOFSDirectory( indexFile );
+			IndexWriter writer = new IndexWriter( indexDir, 
+									new StandardAnalyzer( Version.LUCENE_30), 
+									true, MaxFieldLength.UNLIMITED);
+								
+			Document doc = new Document();
+			writer.addDocument(doc);
+			writer.close();
+		}
+		else
+		{
+			println( "Index already initialized, skipping..." );
+		}
+		
+	}
+	
 	void createSomeUsers()
 	{
 		if( !User.findByUserId( "prhodes" ))
