@@ -25,7 +25,9 @@ class SearchController
 		println "searching Users, queryString: ${queryString}";
 		
 		// String indexDirLocation = "/development/projects/fogbeam/heceta/enron_tiny/index";
-		String indexDirLocation = siteConfigService.getSiteConfigEntry( "indexDirLocation" );
+		String quoddyHome = System.getProperty( "heceta.home");
+		String indexDirLocation = quoddyHome + "/index"; // siteConfigService.getSiteConfigEntry( "indexDirLocation" );
+		
 		File indexDir = new File( indexDirLocation );
 		Directory fsDir = FSDirectory.open( indexDir );
 		
