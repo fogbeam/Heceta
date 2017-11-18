@@ -9,8 +9,9 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.james.mime4j.MimeException;
-import org.apache.james.mime4j.descriptor.BodyDescriptor;
-import org.apache.james.mime4j.parser.Field;
+import org.apache.james.mime4j.stream.BodyDescriptor;
+import org.apache.james.mime4j.stream.Field;
+
 
 /* 
 Header field detected: Message-ID: <21766620.1075859982951.JavaMail.evans@thyme>
