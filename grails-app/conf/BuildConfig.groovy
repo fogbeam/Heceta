@@ -10,9 +10,9 @@ grails.project.dependency.resolution = {
 	}
 	log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
 	repositories {
-		grailsCentral()
+		// grailsCentral()
 		//         grailsPlugins()
-		grailsHome()
+		// grailsHome()
 
 		// uncomment the below to enable remote dependency resolution
 		// from public Maven repositories
@@ -40,7 +40,8 @@ grails.project.dependency.resolution = {
 		compile 'commons-codec:commons-codec:1.6'
 		compile 'org.apache.httpcomponents:httpclient:4.1.2'
 		compile 'javax.mail:javax.mail-api:1.5.5'
-		compile 'com.sun.mail:javax.mail:1.5.5'
+		compile 'com.sun.mail:javax.mail:1.5.5'	
+		compile 'org.apache.james:apache-mime4j:0.7.2'
 
 	}
 	plugins {

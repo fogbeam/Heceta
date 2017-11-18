@@ -3,7 +3,7 @@ package org.fogbeam.heceta
 import java.io.BufferedInputStream
 import java.io.FileInputStream
 
-import org.apache.james.mime4j.parser.MimeEntityConfig
+import org.apache.james.mime4j.stream.MimeConfig
 import org.apache.james.mime4j.parser.MimeStreamParser
 
 import org.fogbeam.heceta.parsing.email.*;
@@ -17,7 +17,7 @@ class RenderController
 		FileInputStream msg = new FileInputStream( file );
 		
 		MyContentHandler handler = new MyContentHandler();
-		MimeEntityConfig config = new MimeEntityConfig();
+		MimeConfig config = new MimeConfig();
 		config.setMaxLineLen(-1);
 		MimeStreamParser parser = new MimeStreamParser( config );
 		parser.setContentHandler( handler );
