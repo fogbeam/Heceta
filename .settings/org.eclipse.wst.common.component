@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="heceta1">
         <wb-resource deploy-path="/" source-path="/grails-app/utils"/>
-        <wb-resource deploy-path="/" source-path="/.link_to_grails_plugins/hibernate-2.2.3/grails-app/i18n"/>
         <wb-resource deploy-path="/" source-path="/.link_to_grails_plugins/navigation-1.2/grails-app/i18n"/>
         <wb-resource deploy-path="/" source-path="/.link_to_grails_plugins/navigation-1.2/grails-app/services"/>
         <wb-resource deploy-path="/" source-path="/.link_to_grails_plugins/navigation-1.2/grails-app/taglib"/>
